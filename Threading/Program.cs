@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Threading
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
+            SizeOfThread();
         }
     }
 }
