@@ -6,9 +6,8 @@ namespace Threading
     {
         static void Main(string[] args)
         {
-            SizeOfThread();
-            
-            //ReleaseBuild();
+            //SizeOfThread();
+            ReleaseBuild();
             //SetInOrder();
         }
     }
