@@ -7,8 +7,9 @@ namespace Threading
         static void Main(string[] args)
         {
             //SizeOfThread();
-            ReleaseBuild();
+            //ReleaseBuild();
             //SetInOrder();
+            //AsyncLockExample();
         }
     }
 }
