@@ -50,6 +50,7 @@
     <Compile Include="Semaphore.cs" />
     <Compile Include="SizeOfThread.cs" />
     <Compile Include="RaiseTheFlag.cs" />
+    <Compile Include="WaitHandles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

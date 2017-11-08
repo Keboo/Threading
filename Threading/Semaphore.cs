@@ -39,7 +39,7 @@ namespace Threading
         {
             using (await _AsyncLock.LockAsync())
             {
-                await LongRunningMethod();
+                await GetCheezBurgerAsync();
             }
         }
 

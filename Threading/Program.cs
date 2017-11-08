@@ -10,6 +10,7 @@ namespace Threading
             //ReleaseBuild();
             //SetInOrder();
             //AsyncLockExample();
+            WaitForMe();
         }
     }
 }
