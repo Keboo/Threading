@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Atomic.cs" />
     <Compile Include="Collections.cs" />
     <Compile Include="Lock.cs" />
     <Compile Include="Ordering.cs" />
