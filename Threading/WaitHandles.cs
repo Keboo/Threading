@@ -10,31 +10,28 @@ namespace Threading
 
         public static void WaitForMe()
         {
-            int count =  0;
             for (int i = 0; i < 10; i++)
             {
                 new Thread(ThreadMethod).Start();
             }
 
-            _AutoResetEvent.Set();
-            _AutoResetEvent.Set();
+            Console.WriteLine("Waiting...");
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 _AutoResetEvent.Set();
             }
 
             Thread.Sleep(1000);
 
-            Console.WriteLine($"{count} threads made in through");
+            Console.WriteLine("Done");
 
             void ThreadMethod()
             {
+                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} waiting");
                 _AutoResetEvent.WaitOne();
-                Interlocked.Increment(ref count);
+                Console.WriteLine($"Thread {Thread.CurrentThread.ManagedThreadId} done");
             }
         }
-
-        private static WaitHandle GetHandle() => new ManualResetEvent(false);
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Threading;
 
 namespace Threading
@@ -11,7 +11,7 @@ namespace Threading
         {
             lock (_LockObject)
             {
-                
+                //Block to synchonize
             }
         }
 
@@ -31,5 +31,23 @@ namespace Threading
                 }
             }
         }
+
+        #region Alternate Locks
+
+        private static readonly object _Kvp = new KeyValuePair<int, object>();
+        private static readonly object _Number = 42;
+        private static readonly object _Text = "Inigo Montoya";
+        private static readonly object _Type = typeof(Program);
+
+        public static void LockC()
+        {
+            lock (_Kvp) { }
+            lock (_Number) { }
+            lock (_Text) { }
+            lock (_Type) { }
+            //lock(this) { }
+        }
+
+        #endregion
     }
 }

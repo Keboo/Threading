@@ -1,6 +1,4 @@
-﻿using System.Threading;
-
-namespace Threading
+﻿namespace Threading
 {
     partial class Program
     {
@@ -10,7 +8,8 @@ namespace Threading
             //ReleaseBuild();
             //SetInOrder();
             //AsyncLockExample();
-            WaitForMe();
+            //WaitForMe();
+            //AsyncLockExample();
         }
     }
 }
