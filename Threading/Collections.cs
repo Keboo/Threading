@@ -18,20 +18,23 @@ namespace Threading
 
         #region BlockingCollection
 
-        private static readonly BlockingCollection<int> _NumbersToProcess = new BlockingCollection<int>();
-        private static readonly Random _Random = new Random();
-        private static int _NumAdded;
-        
+
+
         public static void BlockingCollection()
         {
-            var produceTasks = Enumerable.Range(1, 10)
-                .Select(ProduceValues);
+            const int NumValues = 10;
+            BlockingCollection<int> numbersToProcess = new BlockingCollection<int>();
+            Random random = new Random();
+            int numAdded = 0;
+
+            var produceTasks = Enumerable.Range(1, NumValues)
+                        .Select(ProduceValues);
 
             var consumingTask = Task.Run(async () =>
             {
-                foreach (int number in _NumbersToProcess.GetConsumingEnumerable())
+                foreach (int number in numbersToProcess.GetConsumingEnumerable())
                 {
-                    await Task.Delay(_Random.Next(50, 250));
+                    await Task.Delay(random.Next(50, 250));
                     Console.WriteLine($"Processed {number}");
                 }
             });
@@ -40,15 +43,17 @@ namespace Threading
             consumingTask.Wait();
 
             Console.WriteLine("Done");
+
+            async Task ProduceValues(int value)
+            {
+                await Task.Delay(random.Next(100, 1000));
+                Console.WriteLine($"Added {value}");
+                numbersToProcess.Add(value);
+                if (++numAdded == NumValues) numbersToProcess.CompleteAdding();
+            }
         }
 
-        private static async Task ProduceValues(int value)
-        {
-            await Task.Delay(_Random.Next(100, 1000));
-            Console.WriteLine($"Added {value}");
-            _NumbersToProcess.Add(value);
-            if (++_NumAdded == 10) _NumbersToProcess.CompleteAdding();
-        }
+
 
         #endregion
     }
