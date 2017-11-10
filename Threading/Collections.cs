@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,8 +16,6 @@ namespace Threading
         }
 
         #region BlockingCollection
-
-
 
         public static void BlockingCollection()
         {
@@ -52,8 +49,6 @@ namespace Threading
                 if (++numAdded == NumValues) numbersToProcess.CompleteAdding();
             }
         }
-
-
 
         #endregion
     }

@@ -11,15 +11,14 @@ namespace Threading
             const int MB = 1024 * 1024;
             do
             {
-                Thread t = new Thread(RunForever);
+                Thread t = new Thread(() =>
+                {
+                    while (true) { }
+                });
+
                 t.Start();
                 Console.WriteLine($"Current memory size {Process.GetCurrentProcess().VirtualMemorySize64 / MB} MB");
             } while (Console.ReadLine() == "");
-        }
-
-        private static void RunForever()
-        {
-            while(true) { }
         }
     }
 }

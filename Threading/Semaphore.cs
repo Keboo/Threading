@@ -7,28 +7,28 @@ namespace Threading
     partial class Program
     {
         private static readonly SemaphoreSlim _CheezburgerLock = new SemaphoreSlim(1, 1);
-        private static async Task CanHazCheezburgerAsync()
+        private static async Task CanHazCheezeBurgerAsync()
         {
             await _CheezburgerLock.WaitAsync();
             try
             {
-                await GetCheezBurgerAsync();
+                await GetCheezeBurgerAsync();
             }
             finally
             {
                 _CheezburgerLock.Release();
             }
-
         }
 
         private static void AsyncLockExample()
         {
-            CanHazCheezburgerAsync().Wait();
+            CanHazCheezeBurgerAsync().Wait();
+            //UseAsyncLock().Wait();
         }
 
-        private static Task GetCheezBurgerAsync()
+        private static Task GetCheezeBurgerAsync()
         {
-            return Task.Delay(100);
+            return Task.Delay(1000);
         }
 
         #region Async Lock
@@ -36,9 +36,9 @@ namespace Threading
 
         private static async Task UseAsyncLock()
         {
-            using (await _AsyncLock.LockAsync())
+            using (_AsyncLock.LockAsync())
             {
-                await GetCheezBurgerAsync();
+                await GetCheezeBurgerAsync();
             }
         }
 

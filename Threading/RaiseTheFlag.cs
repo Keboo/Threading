@@ -7,22 +7,25 @@ namespace Threading
     {
         private static int _ShouldStop;
 
-        public static void ReleaseBuild()
+        public static void RaiseTheFlag()
         {
             var thread = new Thread(Count);
             thread.Start();
-            Thread.Sleep(1000);
+
+            //Let the thread count for a bit
+            Thread.Sleep(500);
             _ShouldStop = 1;
+
             Console.WriteLine("Waiting for thread to stop");
             thread.Join();
             Console.WriteLine("Done");
-        }
 
-        private static void Count()
-        {
-            int x = 0;
-            while (_ShouldStop == 0) x++;
-            Console.WriteLine($"Stopping: x is {x}");
+            void Count()
+            {
+                int x = 0;
+                while (_ShouldStop == 0) x++;
+                Console.WriteLine($"Stopping: x is {x}");
+            }
         }
     }
 }

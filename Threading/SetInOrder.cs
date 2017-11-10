@@ -5,8 +5,8 @@ namespace Threading
 {
     partial class Program
     {
-        public static int _FinishedResult;
-        public static bool _IsFinished;
+        private static int _FinishedResult = 3;
+        private static bool _IsFinished;
 
         public static void SetInOrder()
         {

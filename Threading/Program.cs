@@ -5,12 +5,22 @@
         static void Main(string[] args)
         {
             //SizeOfThread();
-            //ReleaseBuild();
+
+            //LockA()
+            //LockB()
+            //LockC()
+
+            //AsyncLockExample();
+
+            //WaitForMe()
+
+            //Collections()
+            //BlockingCollection()
+
+            //AtomicOperations()
+
+            //RaiseTheFlag()
             //SetInOrder();
-            //AsyncLockExample();
-            //WaitForMe();
-            //AsyncLockExample();
-            BlockingCollection();
         }
     }
 }
