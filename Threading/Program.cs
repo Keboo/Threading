@@ -10,6 +10,7 @@
             //AsyncLockExample();
             //WaitForMe();
             //AsyncLockExample();
+            BlockingCollection();
         }
     }
 }
