@@ -27,16 +27,17 @@ namespace Threading
             var produceTasks = Enumerable.Range(1, 10)
                 .Select(ProduceValues);
 
-            var processingTasks = _NumbersToProcess.GetConsumingEnumerable().Select(async x =>
+            var consumingTask = Task.Run(async () =>
             {
-                await Task.Delay(_Random.Next(50, 250));
-                await Task.Run(() =>
+                foreach (int number in _NumbersToProcess.GetConsumingEnumerable())
                 {
-                    Console.WriteLine($"Processed {x}");
-                });
+                    await Task.Delay(_Random.Next(50, 250));
+                    Console.WriteLine($"Processed {number}");
+                }
             });
 
-            Task.WhenAll(produceTasks.Union(processingTasks)).Wait();
+            Task.WhenAll(produceTasks).Wait();
+            consumingTask.Wait();
 
             Console.WriteLine("Done");
         }
