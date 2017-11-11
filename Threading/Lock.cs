@@ -22,6 +22,7 @@ namespace Threading
             try
             {
                 Monitor.Enter(lockObject, ref lockTaken);
+                //Block to synchonize
             }
             finally
             {
@@ -46,6 +47,25 @@ namespace Threading
             lock (_Text) { }
             lock (_Type) { }
             //lock(this) { }
+        }
+
+        public class Foo
+        {
+            public void Bar()
+            {
+                lock (this)
+                {
+                    //Am I safe?
+                }
+            }
+
+            public void Baz()
+            {
+                lock (this)
+                {
+                    
+                }
+            }
         }
 
         #endregion

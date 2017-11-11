@@ -1,4 +1,6 @@
-﻿namespace Threading
+﻿using System.Threading;
+
+namespace Threading
 {
     partial class Program
     {
@@ -19,7 +21,7 @@
 
             //AtomicOperations()
 
-            //RaiseTheFlag()
+            //RaiseTheFlag();
             //SetInOrder();
         }
     }

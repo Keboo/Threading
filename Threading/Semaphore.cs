@@ -36,7 +36,7 @@ namespace Threading
 
         private static async Task UseAsyncLock()
         {
-            using (_AsyncLock.LockAsync())
+            using (await _AsyncLock.LockAsync())
             {
                 await GetCheezeBurgerAsync();
             }
